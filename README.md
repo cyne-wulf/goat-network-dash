@@ -21,6 +21,14 @@ End-to-end Hello GOAT paid request flow with a neon operator cockpit: the dashbo
 
 ---
 
+## 🌐 Deployments
+- **Primary** – run locally or on any Node host via `npm run dev` / `npm run start` to keep API routes and payment proofs fully functional.
+- **GitHub Pages preview** – automatic build from `main` lives at [cyne-wulf.github.io/goat-network-dash](https://cyne-wulf.github.io/goat-network-dash). This is a static snapshot meant for judges, so the Hello GOAT panel is read-only and API-backed flows are disabled (see on-screen banner).
+
+The workflow sits in `.github/workflows/deploy.yml` and removes the API routes before performing a static export so pages can be hosted on GitHub Pages.
+
+---
+
 ## 🚀 Quickstart
 1. **Install dependencies**
    ```bash

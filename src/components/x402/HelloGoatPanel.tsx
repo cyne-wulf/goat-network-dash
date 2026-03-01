@@ -21,10 +21,15 @@ export function HelloGoatPanel() {
     proofs,
     lastHelloGoatSuccessAt,
   } = useProgressStore();
+  const staticMode = process.env.NEXT_PUBLIC_STATIC_BUILD === "true";
 
   const latestProof = proofs[0];
 
   const startFlow = async () => {
+    if (staticMode) {
+      toast.info("Static preview — run locally to trigger Hello GOAT.");
+      return;
+    }
     setLastError(null);
     setLastHint(null);
     setStatus("requesting");
@@ -125,22 +130,37 @@ export function HelloGoatPanel() {
               ledger lands.
             </p>
           </div>
-          <button
-            onClick={startFlow}
-            disabled={status === "requesting" || status === "paying"}
-            className="mt-2 inline-flex rounded-full bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-700 px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,23,42,0.35)] transition hover:translate-y-0.5 disabled:cursor-not-allowed disabled:from-zinc-400 disabled:via-zinc-400 disabled:to-zinc-400"
-          >
-            {status === "requesting" || status === "paying"
+        <button
+          onClick={startFlow}
+          disabled={staticMode || status === "requesting" || status === "paying"}
+          className="mt-2 inline-flex rounded-full bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-700 px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,23,42,0.35)] transition hover:translate-y-0.5 disabled:cursor-not-allowed disabled:from-zinc-400 disabled:via-zinc-400 disabled:to-zinc-400"
+        >
+          {staticMode
+            ? "Static preview"
+            : status === "requesting" || status === "paying"
               ? "Processing..."
               : "Say Hello GOAT"}
-          </button>
+        </button>
         </header>
+        {staticMode && (
+          <div className="mb-6 rounded-2xl border border-dashed border-zinc-300/70 bg-white/70 p-4 text-sm text-zinc-700">
+            This GitHub Pages preview is static, so the Hello GOAT flow is read-only. Run{" "}
+            <code className="rounded bg-zinc-900/80 px-1 py-0.5 text-[11px] text-white">
+              npm run dev
+            </code>{" "}
+            locally to unlock the full x402 challenge → pay → proof experience.
+          </div>
+        )}
         <div className="grid gap-4 md:grid-cols-3">
           <StatusCard
             label="Stage"
-            value={statusLabel(status)}
-            caption={lastError ?? lastHint ?? "Awaiting next action"}
-            tone={statusTone(status)}
+            value={staticMode ? "Static demo" : statusLabel(status)}
+            caption={
+              staticMode
+                ? "API actions disabled on GitHub Pages"
+                : lastError ?? lastHint ?? "Awaiting next action"
+            }
+            tone={staticMode ? "neutral" : statusTone(status)}
           />
           <StatusCard
             label="Last success"
