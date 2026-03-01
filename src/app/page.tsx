@@ -83,7 +83,7 @@ export default function Home() {
             Atlas // Mission Control
           </Badge>
           <h1 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
-            Flashy operator surface for activations, proofs, and observability
+            Operator console for activations, proofs, and observability
           </h1>
           <p className="text-base text-white/80 md:text-lg">
             Track the x402 paywall loop, inspect proof ledgers, and jump to thin-slice views for

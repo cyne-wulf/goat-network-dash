@@ -14,7 +14,7 @@ End-to-end Hello GOAT paid request flow with a neon operator cockpit: the dashbo
 ---
 
 ## ✨ Highlights
-- **Flashy mission control** – neon hero, animated signal ticker, and glass panels for proofs, readiness, and Hello GOAT actions.
+- **Mission control hub** – layered hero, animated signal ticker, and glass panels for proofs, readiness, and Hello GOAT actions.
 - **x402 autopilot** – 402 challenge → invoice modal → automated pay + retries with explorer links and copyable summaries.
 - **Persistent observability** – `data/logs.json` and `data/proofs.json` power a live `/logs` timeline and the Proof of Payment panel.
 - **Operator-focused UX** – activation checklist, status cards, and nav slices for Onboarding, Identity, Payments, Transactions, Webhooks, and Settings.
