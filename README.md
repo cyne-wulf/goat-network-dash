@@ -90,6 +90,7 @@ Provide your own secrets locally; nothing is committed.
 - `NEXT_PUBLIC_RPC_URL`
 - `NEXT_PUBLIC_PROJECT_NAME`
 - (Optional UX seeds) `NEXT_PUBLIC_WALLET_ADDRESS`, `NEXT_PUBLIC_ERC8004_ID`, `NEXT_PUBLIC_X402_MERCHANT_ID`, `NEXT_PUBLIC_X402_MERCHANT_STATUS`, `NEXT_PUBLIC_AGENT_WEBHOOK_URL`, `NEXT_PUBLIC_AGENT_WEBHOOK_VERIFIED`, `NEXT_PUBLIC_AGENT_WEBHOOK_VERIFIED_AT`
+- (Static demo toggle) `NEXT_PUBLIC_STATIC_BUILD` (set to `true` in the GitHub Pages workflow so the Hello GOAT panel advertises read-only mode)
 
 ---
 
